@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>investment Calculator</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/clean-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Custom CSS -->
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="CSS/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="mailto:louismillette1@gmail.com">Email Me</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/louismillette">GitHub</a>
+                    </li>
+                    <li>
+                        <a  href="files/resume.doc" target="_top">Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+<!--     <header class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1 style="color:black;">S&amp;P 500 investment Calculator</h1>
+                        <h2 style="color:black;" class="subheading">How well your investments could've done</h2>
+                        <span style="color:black;" class="meta">Posted by Louis Millette on December 3, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> -->
+
+    <!-- Calculator -->
+    <div style="height:60px;"></div> 
+    <div id="v1">
+      <div class="calc-container">
+          <div class="row" style="width:100%;margin:auto;">
+              <form id="form">
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Year Range:</label>
+                          <input type="text" id="amount-year" readonly>
+                      </p>
+                      <div id="slider-range-year"></div>
+                  </div>
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Yearly Income:</label>
+                          <input type="text" id="amount-income">
+                      </p>
+                      <div id="slider-range-income"></div>
+                  </div>
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Yearly Contribution:</label>
+                          <input type="text" id="amount-contribution">
+                      </p>
+                      <div id="slider-range-contribution"></div>
+                  </div>
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Fee (MER):</label>
+                          <input type="text" id="amount-fee">
+                      </p>
+                      <div id="slider-range-fee"></div>
+                  </div>
+                  <div class="col-md-3 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> State</h4>
+                      <button onclick="myFunctionState()" class="dropbtn" id="stateselect">Your State</button>
+                          <div id="stateDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionState()">
+                              <a href="#" class="state">Alabama</a>
+                              <a href="#" class="state">Alaska</a>
+                              <a href="#" class="state">Arizona</a>
+                              <a href="#" class="state">Arkansas</a>
+                              <a href="#" class="state">California</a>
+                              <a href="#" class="state">Colorado</a>
+                              <a href="#" class="state">Connecticut</a>
+                              <a href="#" class="state">Delaware</a>
+                              <a href="#" class="state">Florida</a>
+                              <a href="#" class="state">Georgia</a>
+                              <a href="#" class="state">Hawaii</a>
+                              <a href="#" class="state">Idaho</a>
+                              <a href="#" class="state">Illinois</a>
+                              <a href="#" class="state">Indiana</a>
+                              <a href="#" class="state">Iowa</a>
+                              <a href="#" class="state">Kansas</a>
+                              <a href="#" class="state">Kentucky</a>
+                              <a href="#" class="state">Louisiana</a>
+                              <a href="#" class="state">Maine</a>
+                              <a href="#" class="state">Maryland</a>
+                              <a href="#" class="state">Massachusetts</a>
+                              <a href="#" class="state">Michigan</a>
+                              <a href="#" class="state">Minnesota</a>
+                              <a href="#" class="state">Mississippi</a>
+                              <a href="#" class="state">Missouri</a>
+                              <a href="#" class="state">Montana</a>
+                              <a href="#" class="state">Nebraska</a>
+                              <a href="#" class="state">Nevada</a>
+                              <a href="#" class="state">New Hampshire</a>
+                              <a href="#" class="state">New Jersey</a>
+                              <a href="#" class="state">New Mexico</a>
+                              <a href="#" class="state">New York</a>
+                              <a href="#" class="state">North Carolina</a>
+                              <a href="#" class="state">North Dakota</a>
+                              <a href="#" class="state">Ohio</a>
+                              <a href="#" class="state">Oklahoma</a>
+                              <a href="#" class="state">Ontario</a>
+                              <a href="#" class="state">Oregon</a>
+                              <a href="#" class="state">Pennsylvania</a>
+                              <a href="#" class="state">Rhode Island</a>
+                              <a href="#" class="state">South Carolina</a>
+                              <a href="#" class="state">South Dakota</a>
+                              <a href="#" class="state">Tennessee</a>
+                              <a href="#" class="state">Texas</a>
+                              <a href="#" class="state">Utah</a>
+                              <a href="#" class="state">Vermont</a>
+                              <a href="#" class="state">Virginia</a>
+                              <a href="#" class="state">Washington</a>
+                              <a href="#" class="state">West Virginia</a>
+                              <a href="#" class="state">Wisconsin</a>
+                              <a href="#" class="state">Wyoming</a>
+                          </div>
+                      </div>
+                      <script>
+                          /* When the user clicks on the button,
+                          toggle between hiding and showing the dropdown content */
+                          function myFunctionState() {
+                              document.getElementById("stateDropdown").classList.toggle("show");
+                          }
+
+                          function filterFunctionState() {
+                              var input, filter, ul, li, a, i;
+                              input = document.getElementById("myInput");
+                              filter = input.value.toUpperCase();
+                              div = document.getElementById("stateDropdown");
+                              a = div.getElementsByTagName("a");
+                              for (i = 0; i < a.length; i++) {
+                                  if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-md-3 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> Filing Status</h4>
+                      <button onclick="myFunctionFiling()" class="dropbtn" id="filingselect">Filing Status</button>
+                          <div id="filingDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionFiling()">
+                              <a href="#" class="filing-status">Single</a>
+                              <a href="#" class="filing-status">Married</a>
+                          </div>
+                      </div>
+                      <script>
+                          /* When the user clicks on the button,
+                          toggle between hiding and showing the dropdown content */
+                          function myFunctionFiling() {
+                              document.getElementById("filingDropdown").classList.toggle("show");
+                          }
+
+                          function filterFunctionFiling() {
+                              var input, filter, ul, li, a, i;
+                              input = document.getElementById("myInput");
+                              filter = input.value.toUpperCase();
+                              div = document.getElementById("filingDropdown");
+                              a = div.getElementsByTagName("a");
+                              for (i = 0; i < a.length; i++) {
+                                  if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-md-3 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> Tax Differed </h4>
+                      <button onclick="myFunctionTax()" class="dropbtn" id="taxselect">Tax Status</button>
+                          <div id="taxDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionTax()">
+                              <a href="#" class="tax-status">401k</a>
+                              <a href="#" class="tax-status">None</a>
+                          </div>
+                      </div>
+                      <script>
+                          /* When the user clicks on the button,
+                          toggle between hiding and showing the dropdown content */
+                          function myFunctionTax() {
+                              document.getElementById("taxDropdown").classList.toggle("show");
+                          }
+
+                          function filterFunctionTax() {
+                              var input, filter, ul, li, a, i;
+                              input = document.getElementById("myInput");
+                              filter = input.value.toUpperCase();
+                              div = document.getElementById("taxDropdown");
+                              a = div.getElementsByTagName("a");
+                              for (i = 0; i < a.length; i++) {
+                                  if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-md-3 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> Fund</h4>
+                      <button onclick="myFunctionFund()" class="dropbtn" id="fundselect">Fund</button>
+                          <div id="fundDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionFund()">
+                              <a class="fund-header">US Index Funds</a>
+                              <a href="#" class="fund">S&amp;P 500</a>
+                              <a class="fund-header">CIBC Mutual Funds</a>
+                              <a href="#" class="fund">CIBC Balanced Fund*</a>
+                              <a href="#" class="fund">CIBC Canadian Index Fund*</a>
+                              <a href="#" class="fund">CIBC U.S Broad Market Index Fund*</a>
+                              <a href="#" class="fund">CIBC Canadian Small-Cap Fund*</a>
+                          </div>
+                      </div>
+                      <script>
+                          /* When the user clicks on the button,
+                          toggle between hiding and showing the dropdown content */
+                          function myFunctionFund() {
+                              document.getElementById("fundDropdown").classList.toggle("show");
+                          }
+
+                          function filterFunctionFund() {
+                              var input, filter, ul, li, a, i;
+                              input = document.getElementById("myInput");
+                              filter = input.value.toUpperCase();
+                              div = document.getElementById("fundDropdown");
+                              a = div.getElementsByTagName("a");
+                              for (i = 0; i < a.length; i++) {
+                                  if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="submit-wrap">
+                      <input id="submit" type="submit" value="How Much?">
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div class="loading" style="width:20px;margin:auto;padding: 20px;"></div>
+      <div id="chartcontainer"></div>
+    </div>
+
+    <div id="v2">
+<!--       <div class="calc-container">
+          <div class="row" style="width:100%;margin:auto;">
+              <form id="form">
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Year Range:</label>
+                          <input type="text" id="amount-year" readonly>
+                      </p>
+                      <div id="slider-range-year"></div>
+                  </div>
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Yearly Income:</label>
+                          <input type="text" id="amount-income">
+                      </p>
+                      <div id="slider-range-income"></div>
+                  </div>
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Yearly Contribution:</label>
+                          <input type="text" id="amount-contribution">
+                      </p>
+                      <div id="slider-range-contribution"></div>
+                  </div>
+                  <div class="col-md-6 col-sm-12" style="height: 130px;">
+                      <p>
+                          <label for="amount" style="float: left;">Fee (MER):</label>
+                          <input type="text" id="amount-fee">
+                      </p>
+                      <div id="slider-range-fee"></div>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> State</h4>
+                      <button onclick="myFunctionState2()" class="dropbtn" id="stateselect">Your State</button>
+                          <div id="stateDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionState2()">
+                              <a href="#" class="state">Alabama</a>
+                              <a href="#" class="state">Alaska</a>
+                              <a href="#" class="state">Arizona</a>
+                              <a href="#" class="state">Arkansas</a>
+                              <a href="#" class="state">California</a>
+                              <a href="#" class="state">Colorado</a>
+                              <a href="#" class="state">Connecticut</a>
+                              <a href="#" class="state">Delaware</a>
+                              <a href="#" class="state">Florida</a>
+                              <a href="#" class="state">Georgia</a>
+                              <a href="#" class="state">Hawaii</a>
+                              <a href="#" class="state">Idaho</a>
+                              <a href="#" class="state">Illinois</a>
+                              <a href="#" class="state">Indiana</a>
+                              <a href="#" class="state">Iowa</a>
+                              <a href="#" class="state">Kansas</a>
+                              <a href="#" class="state">Kentucky</a>
+                              <a href="#" class="state">Louisiana</a>
+                              <a href="#" class="state">Maine</a>
+                              <a href="#" class="state">Maryland</a>
+                              <a href="#" class="state">Massachusetts</a>
+                              <a href="#" class="state">Michigan</a>
+                              <a href="#" class="state">Minnesota</a>
+                              <a href="#" class="state">Mississippi</a>
+                              <a href="#" class="state">Missouri</a>
+                              <a href="#" class="state">Montana</a>
+                              <a href="#" class="state">Nebraska</a>
+                              <a href="#" class="state">Nevada</a>
+                              <a href="#" class="state">New Hampshire</a>
+                              <a href="#" class="state">New Jersey</a>
+                              <a href="#" class="state">New Mexico</a>
+                              <a href="#" class="state">New York</a>
+                              <a href="#" class="state">North Carolina</a>
+                              <a href="#" class="state">North Dakota</a>
+                              <a href="#" class="state">Ohio</a>
+                              <a href="#" class="state">Oklahoma</a>
+                              <a href="#" class="state">Oregon</a>
+                              <a href="#" class="state">Pennsylvania</a>
+                              <a href="#" class="state">Rhode Island</a>
+                              <a href="#" class="state">South Carolina</a>
+                              <a href="#" class="state">South Dakota</a>
+                              <a href="#" class="state">Tennessee</a>
+                              <a href="#" class="state">Texas</a>
+                              <a href="#" class="state">Utah</a>
+                              <a href="#" class="state">Vermont</a>
+                              <a href="#" class="state">Virginia</a>
+                              <a href="#" class="state">Washington</a>
+                              <a href="#" class="state">West Virginia</a>
+                              <a href="#" class="state">Wisconsin</a>
+                              <a href="#" class="state">Wyoming</a>
+                          </div>
+                      </div>
+                      <script>
+                          /* When the user clicks on the button,
+                          toggle between hiding and showing the dropdown content */
+                          function myFunctionState2() {
+                              $('#v2').find('#stateDropdown').toggleClass("show");
+                          }
+
+                          function filterFunctionState2() {
+                              var input, filter, ul, li, a, i;
+                              input = $('#v2').find('#myInput');
+                              filter = input.val().toUpperCase();
+                              div = $('#v2').find('#stateDropdown')
+                              a = div.find("a");
+                              console.log(a)
+                              for (i = 0; i < a.length; i++) {
+                                console.log(a[i].text.toUpperCase().indexOf(filter))
+                                  if (a[i].text.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> Filing Status</h4>
+                      <button onclick="myFunctionFiling2()" class="dropbtn" id="filingselect">Filing Status</button>
+                          <div id="filingDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionFiling2()">
+                              <a href="#" class="filing-status">Single</a>
+                              <a href="#" class="filing-status">Married</a>
+                          </div>
+                      </div>
+                      <script>
+                          function myFunctionFiling2() {
+                              $('#v2').find('#filingDropdown').toggleClass("show");
+                          }
+
+                          function filterFunctionFiling2() {
+                              var input, filter, ul, li, a, i;
+                              input = $('#v2').find('#myInput');
+                              filter = input.val().toUpperCase();
+                              div = $('#v2').find('#filingDropdown')
+                              a = div.find("a");
+                              console.log(a)
+                              for (i = 0; i < a.length; i++) {
+                                console.log(a[i].text.toUpperCase().indexOf(filter))
+                                  if (a[i].text.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                      <div class="dropdown">
+                      <h4 class="catile"> Tax Deferred </h4>
+                      <button onclick="myFunctionTax2()" class="dropbtn" id="taxselect">Your Tax Status</button>
+                          <div id="taxDropdown" class="dropdown-content">
+                          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunctionTax2()">
+                              <a href="#" class="tax-status">401k (No Taxes)</a>
+                              <a href="#" class="tax-status">None (Taxes)</a>
+                          </div>
+                      </div>
+                      <script>
+                          function myFunctionTax2() {
+                              $('#v2').find('#taxDropdown').toggleClass("show");
+                          }
+
+                          function filterFunctionTax2() {
+                              var input, filter, ul, li, a, i;
+                              input = $('#v2').find('#myInput');
+                              filter = input.val().toUpperCase();
+                              div = $('#v2').find('#taxDropdown')
+                              a = div.find("a");
+                              console.log(a)
+                              for (i = 0; i < a.length; i++) {
+                                console.log(a[i].text.toUpperCase().indexOf(filter))
+                                  if (a[i].text.toUpperCase().indexOf(filter) > -1) {
+                                      a[i].style.display = "";
+                                  } else {
+                                      a[i].style.display = "none";
+                                  }
+                              }
+                          }
+                      </script>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="submit-wrap">
+                      <input id="submit" type="submit" value="How Much?">
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div> -->
+      <div class="loading" style="width:20px;margin:auto;padding: 20px;"></div>
+      <div id="chartcontainer"></div>
+    <div>
+
+
+    <div style="margin: auto;padding-left:10%;line-height: 1;">
+      <p style="margin-top: 5px;margin-bottom: 5px;">* None of your data is stored or tracked in any way </p>
+      <p style="margin-top: 0px; margin-bottom: 5px;">* I am not a registered financial advisor, or fiduciary, nor do I work with or for any financial institution</p>
+      <p style="margin-top: 0px; margin-bottom: 5px;">* Some mutual fund returns were approximated using <a href="https://louismillette.github.io/Investement-Calulator/mutual/">this</a> approximation</p>
+    </div>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-md-offset-1 col-md-11 col-md-offset-1">
+                    <h2 class="section-heading">What Do These Number Mean?</h2>
+                    <p> Given the starting year, the top graph shows the taxes, fees and money earned if it were to be withdrawn in the final year, for every final year until the end of the year range provided.  All of these calculations are made in the dollars of the current date.  That is to say, if you put a time span of 1910-1940, this calculator will use the inflation increases and S&amp;P percent increases and dividend return rates, but act as if those rates are applied starting today over the next 30 years.  Then it will deflate all the values to today's value of money, to return real money values.  It also inflates the contributions made to the fund, so it acts like your increasing your contributions, based on each years inflation.  The bottom graph graphs every span (in order) of the length specified by the end - beginning of the year range provided.   </p>
+
+                    <h2 class="section-heading">Tax Calculations</h2>
+                    <p> The tax calculations I do are adjusted for inflation and start state and federal tax brackets.  Specifically, I used the state income tax if there was one (I didn't consider some states special rules).  I also considered income; income isn't taxed, but does hold the ability to push an investor into a higher state or federal tax bracket for capital gains.  I used 2017 tax brackets but before doing any tax calculations, I deflated how much was being taxed to 2017 dollars, applied the appropriate tax bracket, and re-inflated to the time periods dollar, which would later be deflated again for the result.  Capital Gains taxes are only applied when the money is withdrawn, and only applies to taxable gains.  This means money lost to fees would not be taxed, nor the original investments made each year.  All dividends are taxed as qualified dividends, and taxed as they are earned.  After being taxed as earned, they are re-invested into the fund. </p>
+
+                    <h2 class="section-heading">Fees</h2>
+                    <p> The fees, or MER for Management Equity Ratio, are deducted each year.  Just as returns compound in your favor, fee's compound against you.  The MER is reduced from your total money each year, if your MER is 2%, then 2% of all the money invested goes to the financial institution handling the money, every year.  Fees typically range from .05% (vanguard’s index fund) to 3% (if you’re paying 3%, they're robbing you blind!).  Fees are a game changer, and in something like a retirement fund held for around 40 years, they can be hundreds of thousands of dollars.  Most mutual funds charge 1-2%, but are typically unable to provide sufficient evidence that they can outperform a simple index fund.  Don't take my word for it though, this tool is a great way to explore how devastating fees can really be.  </p>
+                    <h2 class="section-heading">Mutual Funds: When to Invest</h2>
+                    <p>A Professional investing your money for you?  What could go wrong! After all, years of school and decades of work experience have trained these professionals to see the future, which is how banks make so much money investing their own money.  They never invest their own money; they make all their money investing your money and charging a fee, a great sign already.  So, when do you invest in a mutual fund? </p>
+                    <p><b> Short Term Investment </b> (1-5 years) How does the S&amp;P 500 (invested through vanguard at .05% fee) perform over a 5 year span vs. most mutual funds?  Most mutual funds are rather risk adverse, on a 5-year investment, you're not going to lose or gain that much.  After inflation, fees, and taxes, you're looking at plus or minus 5% for most funds.  The S&amp;P 500 is riskier, kind of.  There's about 9 instances over the last 130 years where a 5-year investment ended in disaster (~7% of the time), and they line up with bad stock market events (great depression, stagflation, .com bubble, financial crash, etc.).  The upside to this is that approximately 7% of the time, you could be doubling your investment.  Think roaring 20's, investing right after the housing crash of 2008, the .com bubble before it burst, etc.  Most of the time, you won't be making much above inflation with taxes and fees; 5-10% on average just from eyeballing it.  For investments shorter than 5 years, these differences are even more pronounced, the S&amp;P 500 is even more volatile, and the mutual funds don't change much.</p>
+                    <p><b> Long Term Investments </b> (30-40 years) who are the long term mutual funds for?  Considering how hard it is to find a mutual older than 30 years, that should be a hard question to answer (spoiler: its nobody).  Do you love your bank?  Do you feel that they deserve so much more for all the great service they provide, like, say, 33% of your retirement savings?  Then a 30-40-year investment in a mutual fund is for you.  At 30 years, no mutual fund I looked at could even beat inflation (after fees and taxes).  You would've been better off buying gold and burying it in your back yard.  If you run the calculator on a mutual fund you may notice, the bank makes a tidy profit from the fees you paid them.  If you run the calculator for 30 years on the S&amp;P 500 (at the .05% fee vanguard charges) you may notice their commission isn't even large enough to register on the graph.  Not only that, but over a 30-year span, you <i>never</i> lose to inflation.  The upside potential of the S&amp;P 500 is huge, sometimes even enough to triple your money.  </p>
+                    <p>I would love to be proved wrong about mutual funds. If you have one that is older than 20 years and you think outperforms the S&amp;P 500, send me and email at louismillette@protonmail.com</p>
+
+
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p> click <a href="https://github.com/louismillette/Investement-Calulator">here</a> for code</p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/louis.millettee">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/louis-millette">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/louismillette">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Louis Millette 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> 
+
+    <!-- HighCharts -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+
+    <script type="text/javascript" src="JS/hcTheme.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+        <!-- Custom JavaScript -->
+    <script src="../js/custom.js"></script>
+    <script src="JS/custom.js"></script>
+
+</body>
+
+</html>

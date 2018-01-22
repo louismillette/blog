@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Index Fund Returns</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="mailto:louismillette1@gmail.com">Email Me</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/louismillette">GitHub</a>
+                    </li>
+                    <li>
+                        <a  href="files/resume.doc" target="_top">Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/indexFund/investment.jpeg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1 style="color:black;">Index Fund Returns</h1>
+                        <h2 style="color:black;" class="subheading">How much you should really expect from an index fund</h2>
+                        <span style="color:black;" class="meta">Posted by Louis Millette on July 24, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2 class="section-heading">A Better Way to View Investment</h2>
+                    <p>Have you ever invested through a bank, or perhaps a mutual fund online?  Perhaps they gave you a selection of options and gave you a bunch of averages:  the 1 month return, 1 year return, 5 and 10 year average return, and so on.  But how much money will you make?  If you invested $1 today and came back in 40 years, how much money would they give you?  After fees and inflation and taxes, it's not clear.  That’s why I came up with a better way of visualizing this.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row fullbody">
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/41.embed?logo=false?logo=false&link=false"></iframe>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/39.embed?logo=false?logo=false&link=false"></iframe>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                      <p>These are the S and P 500 index fund graph with it's dividends, and the inflation rate in the USA with the consumer price index, since around the 1800's.  While each is interesting and says a lot about investing the united states, these traditional graphs emphasize how little seeing the nominal rate of return impacts how much money you'll make over a period of time; even if you subtract the inflation and add the dividend return to the nominal return of the S and P 500, you've omitted taxes and fees, and still have almost no idea how much money can actually be made through investing.</p>
+
+                    <p>I built a compound investment calculator (in python 3.4) that takes functions for amount added every year, capital gains taxes, dividend returns every year, taxes on dividends, rate of return every year and inflation every year.  I applied the S and P 500 returns to this data and came up with a money multiplier table (below):   </p>
+                </div>
+            </div>
+        </div>
+        <div class="row fullbody">
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/45.embed?logo=false&link=false"></iframe>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/47.embed?logo=false&link=false"></iframe>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>Between the years 1975 and 2015, the X represents the year invested, Y the year removed, and Z is the multiplier.  This means, for example, if I invested $5000 in the S and P 500 through vanguard at a .05% fee (the actual fee they charge for investing in the S and P 500 as of writing this) in Texas and I am roughly in the middle class (50,000 - 100,000 a year for someone un-married) and this is not through a 401k, if I take the $5000 out in 2014, I’ll have $15,000 after tax and fees <b>in 1975 dollars</b>.  If that investment was in California (or New York), it would be $13,300. </p>
+
+                    <p>States like New Hampshire, Texas, and Washington have no state capital gains tax; states like California and New York have about a 9% capital gains tax on the middle class (this is in addition to the federal capital gains tax).  If you plan to invest outside of a 401k or other tax deferred plan, middle class Americans living in California will have approximately the same multiplier in the S and P 500 as the wealthiest 1 % of Americans living in New Hampshire.  This seemingly small difference can have a large impact, in Texas an investments made after the year 2000 almost all grow in size compared to inflation, while in California they almost all lose money to inflation.</p>
+                    <h2 class="section-heading">Fees Effect On Your Investment</h2>
+                    <p>Investments in Vanguards S and P 500 index fund carry a fee of .05%, but what affect would a 2% fee have on your savings?  To be clear, a 2% fee is a typical fee you'd see on a managed fund, like a mutual fund, and the fees generally applied on these funds are applied on your entire account holdings <i> every year</i>.  Because mutual funds don't provide enough data/ haven't been around long enough, I’ll compare the difference in rates on the S and P 500 chart from above.  Everything below will be assuming a 0% state capital gains taxes.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row fullbody">
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/49.embed?logo=false&link=false"></iframe>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/51.embed?logo=false&link=false"></iframe>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p> Be weary of the fees!  It's not hard to see how much even a small fee effects your savings.  This is one of the things to watch out for when it comes to actively managed funds; when it looks like funds are make 6%-12% every year, they may, in fact, be making considerably less.  A common miss conception is that a 2% fee is like a 2% capital gains tax, but this is not the case.  The 2% fee will compound just like interest, causing the Texas 1975-2014 multiplier to go from 3.01 to 1.37, effectively costing the investor half their money.  It is difficult to determine just how much fees are costing you in an actively managed fund, and sometimes hard to find exactly what fees you are even being charged (they go out of their way to hide them!)  Make sure to do some research before investing in one, it could be costing you hundreds of thousands of dollars in the long run.</p>
+
+                     <h2 class="section-heading">Historical 40 Year Compounded Returns</h2>
+                     <p>for both a tax deferred 401k investment and regular investment, these graphs represents the multiplier if X amount of money is invested <i> each year</i> for 40 years, starting on the x-axis year (if the multiplier is 40, that would indicate that your investment only beat inflation).  These are in states without capital gains taxes, and assume you're paying a federal capital gains tax of 15% (middle class).  The shaded regions in both graphs represent a range of possible multipliers given a combination of investments in the S and P 500, and 10 year T bills (using python stats stack and optimization techniques outlined on GitHub). </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row fullbody">
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/57.embed?logo=false&link=false"></iframe>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/59.embed?logo=false&link=false"></iframe>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+                    <p>Notice, you never lose in the stock market, at least not in the S and P 500 over 40 years.  None of the multipliers, even without a tax deferred 401k plan, dip below 40; you always make at least all your payments back, after inflation, fees, and taxes.  Also interesting, you're not always better off investing in any safe investments.  If you started investing for 40 years between the years 1916-1933, investing all your money in the S and P 500 every year was a better investment then investing in <i>any</i> combination of T-bills in any year.  Still it's worth noting, investing in safe investments is a good way of hedging against the worst years, if you started investing in 1881, you would have been better off investing in some combination of t bills and the S and P 500.  Lastly, this is not a comprehensive look at the vast array of possible investments, just an analysis of two.</p>
+
+                    <p>So how much can you expect to make investing in the S and P 500, if you're in the middle class approximately, invest in Vanguard, and don’t pay state CG tax?</p>
+
+                     <h2 class="section-heading">The Big Picture</h2>
+                    <p>Using the 401k tax deferred index fund only returns, this is a histogram of all the 40 year multipliers, as defined above.  It would be reasonable to expect 90-150 times your yearly contribution.  This is certainly not a normally distributed dataset, in fact it more closely resembles an exponential one, so I fit a gamma curve (SciPy does better with the gamma fit).  This has a profound implication: the difference between having a $450,000 retirement fund and a $1,250,000 retirement fund, even when you diversify your portfolio, is mostly just luck.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row fullbody">
+            <div class="col-md-12 col-sm-12">
+                <iframe width="100%" height="800" frameborder="0" scrolling="no" src="http://plot.ly/~louismillette/61.embed?logo=false&link=false"></iframe>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p> click <a href="https://louismillette.github.io/Investement-Calulator/">here</a> for code</p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/louis.millettee">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/louis-millette">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://louismillette.github.io/Investement-Calulator/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Louis Millette 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+        <!-- Custom JavaScript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
