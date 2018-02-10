@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="My Personal Website">
+    <meta name="author" content="Louis Millette">
+    <meta name='designer' content='Louis Millette'>
+    <meta name='owner' content='Louis Millette'>
+    <meta name='keywords' content='Louis, Millette, Code, Python, Blog'>
+    <meta name='url' content='http://www.louismillette.com'>
+    <meta name='identifier-URL' content='http://www.louismillette.com'>
+    <meta name='owner' content='Louis Millette'>
+    <meta name='reply-to' content='louismillette1@gmail.com'>
+    <meta name='pagename' content="Louis Millette's personal website for code, projects, research, and piffy observations" >
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='blogcatalog'>
+    <link rel='logo' type='image/jpeg' href='L.png'>
+    <link rel='image_src' href='img/L.png' type='image/jpeg'>
+    <link rel="shortcut icon" type="image/x-icon" href="img/L.png" />
+
+    <title>Investement Returns Don't Matter That Much</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="mailto:louismillette1@gmail.com">Email Me</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/louismillette">GitHub</a>
+                    </li>
+                    <li>
+                        <a  href="files/resume.doc" target="_top">Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/returns.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1 style="color:white;">Investement Returns Don't Matter That Much</h1>
+                        <h2 style="color:white;" class="subheading">There's no evidence that if you invest in the S and P 500 for 40 years, the first 20 years of returns matter at all</h2>
+                        <span style="color:white;" class="meta">Posted by Louis Millette on August 28, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2 class="section-heading"> How Do One Year Returns Effect the Total?</h2>
+                    <p>I ran my <a href="http://www.louismillette.com/Calculator/" target="_blank">investment calculator</a> for an individual investing $7000 (adjusted for inflation each year) in the S and P 500 for 40 years in a 401k making $60000 a year.  I looked at how much money this person was pulling out of the stock market, on every continuous 40-year span, and took the correlation between each nth period return and the final amount.  In English, <b> how much does each year's market returns affect the grand total?</b></p>
+
+                    <p>I don't just want the correlation, I want a confidence interval.  This way I can tell which correlations are significantly not 0 at the 95% confidence level.  As The data is explicitly not i.i.d., most traditional methods will fail; hence I fell back on the statistician’s favorite backup: bootstrapping.  I started by looking at a single year; how much does the nth year affect the grand total, and is there evidence enough to show it is not zero?</p>
+
+
+                    <div id="chart1" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+                    <p>Any year with red shading is significantly not 0 and any with the orange is <i>almost </i> not significant.  Or course the last year before taking your money out matters, a lot.  But the second to last year has little impact.  While it looks like there is a cyclical pattern in the last 20 years, it’s a trap!  We can only make any solid conclusions based on the 1st and 13th, (and 8th,9th,18th if we're feeling generous) years before removing the money, as the other year lag correlations are not significantly NOT 0.  We can't conclude that they have any effect on the end outcome.  That’s crazy!  That means there's no evidence to support the idea that, aside from a couple years, any single year return has a meaningful impact out the final amount.  This of course only applies to the specific situation described in the beginning; however, I made it broad: as far as 40-year investments go, this situation is one of the most exposed to market conditions.  Most people will be significantly <i> less </i> exposed to market conditions as most people start moving their retirement savings into safer assets at they approach retirement, leaving these correlations to be even less significant for those individuals.  This also says something about the 13th year lag, why is the correlation for that year so high?  Perhaps it's a business cycle thing?  I'll leave the speculation and hand waving to the economists.</p>
+
+                    <h2 class="section-heading">5 year moving average</h2>
+
+                    <p> So almost no single year has any effect on the final amount of money pulled out of the S and P 500.  What about the 5-year moving average?  One year may be a fluke but 5 years could be a full-blown recession; surely half a decade of market conditions must affect the outcome of our investment? </p>
+
+                     <div id="chart2" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+                     <p> This is looking at the correlation between the end amount and the average return over the next 5 periods for each period.  If the next 5 periods are good and I'm 15 years away from retirement, that's significantly bad for my retirement fund.  However, if I'm more than 20 years away from retirement, there is not enough evidence to support the idea that the next 5 years of returns have a significant impact on my retirement fund.  In other words, if you're anywhere from just starting to save for retirement to 20 years from just starting and the 2008 financial crash happens again, don’t worry.  There's no evidence that it will affect your retirement fund.  If you're ten years away from retirement and there's another great depression, however, I hope you were bullish in municipal bonds.</p>
+
+                     <p>Why did I do this?  According to <a href="https://seekingalpha.com/article/4140477-retirement-get-safe-6-percent-income?page=2" target="_blank">Seeking Alpha</a>, "if you invest in 401(k) every paycheck, and still have more than 10-15 years to retire, you are getting less of a bargain each passing month." (about the booming stock market).  I would beg to differ, my numbers suggest this statement has no evidence, and is simply pulled out of thin air.  I'd like to see their evidence for this claim.</p>
+
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p> click <a href="https://github.com/louismillette/Investement-Calulator">here</a> for code</p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/louis.millettee" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/louis-millette" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/louismillette" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Louis Millette 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- high charts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+        <!-- Custom JavaScript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
