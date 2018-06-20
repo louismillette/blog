@@ -1,0 +1,31 @@
+.picker-chart rect {
+  fill: steelblue;
+}
+
+.picker-chart text {
+  display: none;
+  fill: red;
+  font: 20px sans-serif;
+  text-anchor: end;
+}
+
+/*.picker-chart text:hover {
+  display: inline;
+  font: 50px sans-serif;
+}*/
+
+rect.lightgreen {
+  fill: steelblue;
+  opacity: 0;
+}
+
+.picker-box{
+	border: 2px solid green; 
+	border-radius: 20px;
+}
+
+
+.picker-title{
+	text-align: center;
+	font-weight: 200;
+}

@@ -1,3 +1,5 @@
+var _diff;
+
 function HandleCalculator(version){   
     /*
     Handle Drop down selections
@@ -72,6 +74,8 @@ function HandleCalculator(version){
             max: maxx,
             slide: function( event, ui ) {
                 $('#' + version).find( "#amount-year" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+                setCount(".picker-chart", ui.values[ 1 ] - ui.values[ 0 ], 50000);
+                _diff = ui.values[1] - ui.values[0]
             }
         });
         $('#' + version).find( "#amount-year" ).val(
@@ -102,6 +106,9 @@ function HandleCalculator(version){
             values: [ 1910, 1940 ],
             slide: function( event, ui ) {
                 $('#' + version).find( "#amount-year" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+                setCount(".picker-chart", bar1, ui.values[ 1 ] - ui.values[ 0 ], 50000);
+                _diff = ui.values[1] - ui.values[0];
+                Effects()
             }
         });
         $('#' + version).find( "#amount-year" ).val(
@@ -140,9 +147,8 @@ function HandleCalculator(version){
         max: 1000,
         value: 0,
         slide: function( event, ui ) {
-            $('#' + version).find( "#amount-contribution" ).val('$ ' + Math.round(1000000 * (ui.value/1000)**2));
-            //setAmount(".picker-chart", bar1, _barHeight-ui.value);
-
+            $('#' + version).find( "#amount-contribution" ).val('$ ' + Math.round(800000 * (ui.value/1000)**3));
+            bar1 = setAmount(".picker-chart", bar1, _barHeight-ui.value);
         }
     });
     $('#' + version).find( "#amount-contribution" ).val('$ ' + $('#' + version).find( "#slider-range-contribution" ).slider( "value" ) );
@@ -182,8 +188,6 @@ function HandleCalculator(version){
         var filing = $(this[6]).text().toLowerCase();
         var tax = $(this[8]).text();
         var fund = $(this[10]).text().replace('*','');
-        console.log(tax)
-        console.log(state)
         if(tax == '401k'){
             tax="true"
         }
@@ -193,14 +197,16 @@ function HandleCalculator(version){
         else{
             tax="false"
         }
-        console.log(fund)
         if((fund == 'Fund')||(fund == 'S&P 500')){
             console.log(fund)
             fund="S and P 500"
             console.log('hit')
         }
-        state = (state == "your state" ?  "Wyoming" : state)
-        filing = (filing == "Single" || filing == "Married" ?  filing : "single")
+        state = (state == "your state" ?  "Wyoming" : state);
+        filing = (filing == "Single" || filing == "Married" ?  filing : "single");
+        contributions_explicit = getValues(_diff);
+        contributions_explicit.push(0);
+        console.log(contributions_explicit)
         if(version == "v1"){
             submission1 = {
                 "v":"1",
@@ -213,6 +219,7 @@ function HandleCalculator(version){
                 "taxdef": tax,
                 "fee": fee,
                 "fund": fund,
+                "contributions_explicit": JSON.stringify(contributions_explicit)
             }
             submission2 = {
                 "v":"2",
@@ -224,6 +231,7 @@ function HandleCalculator(version){
                 "taxdef": tax,
                 "fee": fee,
                 "fund": fund,
+                "contributions_explicit": JSON.stringify(contributions_explicit)
             }
         }
         else{
@@ -237,6 +245,7 @@ function HandleCalculator(version){
                 "taxdef": tax,
                 "fee": fee,
                 "fund": fund,
+                "contributions_explicit": JSON.stringify(contributions_explicit)
             }
         }
         console.log(submission1)
@@ -269,6 +278,9 @@ function HandleCalculator(version){
 };
 
 function localJsonpCallback(version, span, contribution, json) {
+    console.log('RET VALS')
+    console.log(json)
+    console.log('END RET VALS')
     version = $(version).attr('id')
     //console.log(version)
     if(json.error){
