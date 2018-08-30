@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="My Personal Website">
+    <meta name="author" content="Louis Millette">
+    <meta name='designer' content='Louis Millette'>
+    <meta name='owner' content='Louis Millette'>
+    <meta name='keywords' content='Louis, Millette, Code, Python, Blog'>
+    <meta name='url' content='http://www.louismillette.com'>
+    <meta name='identifier-URL' content='http://www.louismillette.com'>
+    <meta name='owner' content='Louis Millette'>
+    <meta name='reply-to' content='louismillette1@gmail.com'>
+    <meta name='pagename' content="Louis Millette's personal website for code, projects, research, and piffy observations" >
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='blogcatalog'>
+    <link rel='logo' type='image/jpeg' href='L.png'>
+    <link rel='image_src' href='img/L.png' type='image/jpeg'>
+    <link rel="shortcut icon" type="image/x-icon" href="img/L.png" />
+
+    <title>Secret Santa</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="mailto:louismillette1@gmail.com">Email Me</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/louismillette">GitHub</a>
+                    </li>
+                    <li>
+                        <a  href="files/resume.doc" target="_top">Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/back_hi_def.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1 style="color:black;">Secret Santa</h1>
+                        <h2 style="color:black;" class="subheading">Ever engaged in an office secret santa and wondered who has your name?  Math is good at that</h2>
+                        <span style="color:black;" class="meta">Posted by Louis Millette on August 29, 2016</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2 class="section-heading">The Rules Are Simple</h2>
+                    <p>You and your co-workers are picking names out of a hat.  Whomever gets your name must buy you a gift, and if you get your own name you pick a new one.  Who got your name?  You already know 2 out of the 10 people in the room personally, and whose name they got (if they aren't telling you who they got, it's you.  Saved you some time already.)  It couldn't be simpler, its an equal probability for each person, right?  Not quite</p>
+
+                    <h2 class="section-heading">Why Not Equal Probabilities? </h2>
+                    <p>If there are 5 people in the pool, yourself included, and ALL that you know is that person 4 got person 2 and person 5 got person 4, who got person one?  Well if person 4 and 5 got someone already, all we're really doing is shuffling around different permutations of how persons 1,3, and 4 got gifts for people 1,2, and 3.  At first glance, it seems like person one has a 50% chance of being picked by person 3 and person 5 but wait! In one of those permutations, person 5 gets a gift for person 1 and person 1 gets a gift for person 2 and person 3 gets a gift for person 3 (can't get a gift for yourself).  In fact in this case, person one has a 66% chance of being picked by person 4 and only a 33% of being picked by person 3.</p>
+
+                    <p>Instead of using permutations, I use derangements, a sub set of a set of permutations where each element has moved.  In this case, no one person gives them self a gift.  This is exactly the tool to solve the problem, except <i> we already know some of the peoples gifts</i>.  Pythons itertools provides an ideal solution: we can make each derangement, then take out the ones that contradict the information provided, and finally look at the distribution of each number in the 0th slot (assuming we are the 0th person).  This, however, has its limitations: mainly the number of derangements for a given number of participants increases almost as quickly as factorials.  After 7, this brute force method no longer works.  What we really need is something more realistic, something that works up to about 100 people.</p>
+
+                    <h2 class="section-heading">Counting (Quasi)Derangements</h2>
+
+                    <p>A good way to find the probability that any particular participant has picked our name is to count the derangements instead of finding them, and to do this I'll use the recursive formula for counting derangements: <br> !n = (n-1)(!(n-1)+!(n-2)) <br> This, however, doesn't solve the problem, as we are more interested in the degenerations where some (but not all) permutations need not change position.  So I derived my own formula for this, for finding these quasi degenerations: <br><br> Let n be the number of "positional arguments" - people for whom their gift-buyer is still unknown <br> let m be the number of "free arguments" - people for whom their gift buyer is known. </p>
+
+                    <img src="img/nums1.gif"></img>
+
+                    <p>In this picture, let’s let the circles represent the people and the squares represent the gifts gotten for said person.  In this case n = 5 and m= 0: each person has a gift to be bought by someone in the pool. </p>
+
+                    <img src="img/nums2.gif"></img>
+
+                    <p> if we assume that person 5 gets a gift for person 3, then the problem reduces to the above format: person 5 is out of the pool of people buying gifts and gift 3 is know so it no longer in the pool of gifts to be bought.  We now have a situation where n = 3 and m = 1 (3 of the slots have the same number, one of the slots has a different one).  Using this, I derived the following formula for the number of quasi derangements: <br><br> !(n,m) = m * !(n,m-1) + n * !(n-1,m)  <br><br> By intuiting that, for any m in the pool, there are 2 possibilities:</p>
+                    <ul><li>1) this person takes a hat without a number that corr. to a position in the pool</li>
+                        <li>2) this person takes a hat with a number that corr. to a position in the pool</li></ul>
+                    <p> and finally !(n,0) = !n; !(0,m) = m! (!n is the subfactorial operator).</p>
+                    <p> Now, for up to about 10-20 people, we can find the probability that any one of them got us a gift by using the person pool/ gift pool method outlined above.  The efficiency of the !(n,m) operator is O(2^n), but we can seriously speed it up by building a database of each n,m calculation and then pulling them when needed.  This method significantly sped up my calculation, up to 170 people in about 5 minutes (after creating the database, these calculations are instantaneous.)  After 170 people, the number of quasi derations is so absurdly high python throws its hands up and calls in infinity.
+
+                    <h2 class="section-heading">Back to That 10 person example</h2>
+                    So if there are 10 people, and we know who 2 people (including ourselves) got gifts for (let’s say I got a gift for person 3 and person 4 got a gift for person 5), what are the odds person 7 got me a gift? !(5,2)/!(6,2) = 2428/18806 ~= 12.9%.  The odds of person 3 getting me a gift?  !(6,1)/!(6,2) = 2119/18806 =11.26%.
+
+                </div>
+
+            </div>
+        </div>
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p> click <a href="https://github.com/louismillette/onefilers">here</a> for code</p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/louis.millettee">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/louis-millette">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/louismillette">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Louis Millette 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+        <!-- Custom JavaScript -->
+    <script src="../js/custom.js"></script>
+
+</body>
+
+</html>

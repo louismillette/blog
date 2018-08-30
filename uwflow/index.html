@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Louis Millette's personal website for code, projects, research, and pithy observations">
+    <meta name="author" content="Louis Millette">
+    <meta name='designer' content='Louis Millette'>
+    <meta name='owner' content='Louis Millette'>
+    <meta name='keywords' content='Louis, Millette, Code, Python, Blog'>
+    <meta name='url' content='http://www.louismillette.com'>
+    <meta name='identifier-URL' content='http://www.louismillette.com'>
+    <meta name='owner' content='Louis Millette'>
+    <meta name='reply-to' content='louismillette1@gmail.com'>
+    <meta name='pagename' content="Louis Millette" >
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='blogcatalog'>
+    <link rel='logo' type='image/jpeg' href='L.png'>
+    <link rel='image_src' href='img/L.png' type='image/jpeg'>
+    <link rel="shortcut icon" type="image/x-icon" href="img/L.png" />
+    <meta property="image" content="/img/back_code.jpg" />
+
+
+    <title>Uwflow's Big Problem</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="mailto:louismillette1@gmail.com">Email Me</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/louismillette">GitHub</a>
+                    </li>
+                    <li>
+                        <a  href="files/resume.doc" target="_top">Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/houses.jpeg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1 style="color:black;">UWflow's Big Problem</h1>
+                        <h2 style="color:black;" class="subheading">Uwflow has a dangerous number of security issues.</h2>
+                        <span style="color:black;" class="meta">Posted by Louis Millette on January 26, 2018</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h2 class="section-heading">TL;DR</h2>
+                    <p>UWflow, UW's go-to website for rating courses and professors, is lacking in security and validation checks, to the point that I was able to build a bot on the site in under 7 days.  Some of its issues, however, run even deeper.</p>
+
+                    <h2 class="section-heading">These Guys Are <i>Really</i> Smart</h2>
+                    <p>UWflow is beloved among waterloo students, myself included; it provides a solid platform to rate and select courses.  Flow open sourced their code in February of 2014, making it publicly available on GitHub, but the website has been live since 2012.  About a week ago, I decided to peek around and see what they have, the software engineers that built it graduated in 2014, I wanted to see if I could learn anything from their success.  <a href="https://uwflow.com/about">These guys</a> are, after all, some of waterloo's best and brightest, between them are work experiences at Google, Facebook, Twitter, and Sandy Wu currently works at Stripe, detecting fraud.  These guys have a website used by 16000+ students and the best internships any CS student could ask for, they are veritable geniuses in their field.  When I looked at their open source code, however, I couldn't help but notice a couple bugs that have apparently been around over half a decade.</p>
+                    <h2 class="section-heading">A Couple of Bugs</h2>
+                    <img src="img/course_validation.png"></img>
+                    <p style="float:left;">Here's a picture of the course validation code.  There's a problem here, the only thing that gets checked is whether the course exists according to uwflow, and whether I've already taken the course.  What if I'm trying to add a course that doesn't make any sense?  What if I’m trying to take STAT 444, without taking any pre-req stat courses?  That should be an issue!  And even worse is that it's not checking whether the time I’m taking the course is in fact valid.  I was able to add courses when they weren't being offered in the term I claimed to be taking them, and uwflow actually assumed <i> they</i> had made a mistake, creating the class in a term it wasn't offered, and making me the only person enrolled in it!</p>
+
+                    <img src="img/email_validation.png"></img>
+                    <p style="float:left;">Here's a picture of the account validation code, when signed up with email.  They have set up a check on the password length, to protect their users, but have they have not set up a validation of email to protect themselves.  While there is code to send emails, a quick test confirmed that it’s not in use; they don't send any form of welcome email, and they don't use user tokens and email validation to make sure the email belongs to the person signing up with it.  This functionality usually stops would-be bots in the their tracks: it's one thing to make a series of web requests, it's another to create a new email address each time (it would at least slow them down significantly).</p>
+
+                    <p> Hi, my name is "); DROP TABLE; and I <i>really</i> hope you escape your form submissions before saving.  Of course, I didn't try to push this one, I'm not trying to destroy anything here.  They may have overridden flask's save method somewhere, but I couldn’t find it.</p>
+
+                    <p>The terms of service is too generous.  It's complying completely with the California laws on data protection, focusing almost exclusively on how it's not abusing consumer data.  It has omitted what visitors are not allowed to do, mainly creating bots or scraping the site.  I won't break the law, even to prove a point, if there was a clause mentioning it, I would have stopped then and there.</p>
+
+                    <p>The last bug is not really a bug, but a huge convenience for anyone trying to bot the site:  The transcript parser is built front end, and sends a post request that’s just a JSON dictionary to the back end.  That means all anyone has to do is create a realistic looking dictionary of classes and send it in a post request, instead of reproducing an entire transcript in text.</p>
+
+                    <h2 class="section-heading">My Bot</h2>
+                    <p> was it possible that Waterloo's best and brightest students had created a project this lacking in user validation?  I assumed I had made a mistake.  There was no way that these geniuses could have omitted so much; The kind of things that jumped out at me in minutes hadn't even crossed their mind in 6 years?  I decided to test it for myself, I created  a bot on uwflow. It took me 7 days, and it wouldn't have been possible without every bug mentioned above.  I set it up to be scalable but didn't scale it (it could scale over thousands of reviews, making the lack of email verification important).  It is about as skinny as I could possibly make it, it doesn't even save the usernames and passwords of accounts it creates, and just leaves one review per account.  It doesn't work on non-400 level courses cause that’s what I tested it with, although it wouldn't be too hard to fix that.  I should mention, I made one bot and rated one course, and that’s it; I have no intention to do anything malicious.  This is really a proof of concept, the concept that uwflow has some serious validation/security flaws.  For reference, I left one negative rating of STAT 441, but to be fair I would've left the rating myself so really, it doesn’t matter.  </p>
+
+                    <p>Having created a bot myself and proven how easy it is, I certainly hope that some of these issues are fixed.  I will be taking the ratings on the website with a grain of salt from now on. </p>
+
+
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p> click <a href="https://github.com/louismillette/waterloo-houseing">here</a> for code</p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/louis.millettee" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/louis-millette" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/louismillette" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Louis Millette 2017</p>
+                    <p class="copyright text-muted" style="margin-top: 0px; margin-bottom: 0px;">I have never let my schooling interfere with my education.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/clean-blog.min.js"></script>
+
+        <!-- Custom JavaScript -->
+    <script src="../js/custom.js"></script>
+
+</body>
+
+</html>
